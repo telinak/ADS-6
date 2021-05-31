@@ -2,7 +2,7 @@
 #ifndef INCLUDE_BST_H_
 #define INCLUDE_BST_H_
 template<typename T>
-  class BST {
+class BST {
   public:
   struct Node {
     T value;
@@ -24,33 +24,33 @@ template<typename T>
 };
 
 template<typename T>
-  BST<T>::BST() :root(nullptr) {
-  }
+BST<T>::BST() :root(nullptr) {
+}
 template<typename T>
-  BST<T>::~BST() {
-  }
+BST<T>::~BST() {
+}
 
 template<typename T>
-  typename BST<T>::Node* BST<T>::addNode(Node* root, T value) {
-    if (root == nullptr) {
-      root = new Node;
-      root->value = value;
-      root->count = 1;
-      root->left = root->right = nullptr;
-    } else if (root->value > value) {
-      root->left = addNode(root->left, value);
-    } else if (root->value < value) {
-      root->right = addNode(root->right, value);
-    } else {
-      root->count++;
-    }
-    return root;
+typename BST<T>::Node* BST<T>::addNode(Node* root, T value) {
+  if (root == nullptr) {
+    root = new Node;
+    root->value = value;
+    root->count = 1;
+    root->left = root->right = nullptr;
+  } else if (root->value > value) {
+    root->left = addNode(root->left, value);
+  } else if (root->value < value) {
+    root->right = addNode(root->right, value);
+  } else {
+    root->count++;
   }
+  return root;
+}
 
 template<typename T>
-  void BST<T>::add(T value) {
-    root = addNode(root, value);
-  }
+void BST<T>::add(T value) {
+  root = addNode(root, value);
+}
 
 template<typename T>
   int BST<T>::searchNode(Node* root, T value) {
